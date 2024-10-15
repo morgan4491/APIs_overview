@@ -12,9 +12,9 @@ function outputWeatherData(weatherData) {
     const humidityOutput = document.querySelector('#humidity');
 
     cityOutput.textContent = weatherData.name;
-    tempOutput.textContent = `Temperature: ${Math.round(weatherData.main.temp)}°F`;
-    windOutput.textContent = weatherData.wind.speed;
-    humidityOutput.textContent = weatherData.main.humidity;
+    tempOutput.textContent = `Temp: ${Math.round(weatherData.main.temp)}°F`;
+    windOutput.textContent = `Wind Speed: ${weatherData.wind.speed} mph`;
+    humidityOutput.textContent = `Humidity: ${weatherData.main.humidity}%`;
 
     console.log(weatherData);
 }
@@ -22,12 +22,12 @@ function outputWeatherData(weatherData) {
 async function getWeatherData(eventObj) {
     eventObj.preventDefault();
 
-    // const apiKey = '01b957818c63901e03654fe7ca33d042';
+    const apiKey = 'ad49579fbbb39ce114279f93681b8507';
 
     const cityInput = document.querySelector<HTMLInputElement>('#city');
 
 
-    // const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&units=imperial&appid=` + apiKey;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&units=imperial&appid=` + apiKey;
 
     const resObject = await fetch(url);
     const data = await resObject.json();
@@ -41,7 +41,7 @@ cityForm.addEventListener ('submit', getWeatherData)
 
 
 async function getStarWarsData() {
-    // const resObject = await fetch('https://swapi.dev/api/people');
+    const resObject = await fetch('https://swapi.dev/api/people');
 
     const data = await resObject.json();
 
